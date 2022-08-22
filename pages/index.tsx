@@ -28,8 +28,9 @@ const Home: NextPage = () => {
           বাংলা একাডেমি আধুনিক বাংলা অভিধান – Bangla Academy Adhunik Bangla
           Ovidhan
         </title>
+        <link rel="icon" href="/icon.jpg" />
       </Head>
-      <div className="w-full flex items-center flex-col">
+      <div className="w-full flex items-center flex-col px-2">
         <div className="w-full h-auto flex items-center flex-col">
           <p className="text-black mt-14 text-4xl">অভিধান</p>
           <p className=" text-gray-500">বাংলা একাডেমি আধুনিক বাংলা অভিধান</p>
