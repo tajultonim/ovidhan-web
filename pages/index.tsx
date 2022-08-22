@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const [words, setWords] = useState([]);
@@ -14,8 +15,8 @@ const Home: NextPage = () => {
     }, 1000);
   }
   function callServerScript(e: any) {
-    console.log("req:",e.target.value);
-    
+    console.log("req:", e.target.value);
+
     axios("/api/search?q=" + e.target.value).then((res: any) => {
       setWords(res.data);
     });
@@ -29,9 +30,11 @@ const Home: NextPage = () => {
         </title>
       </Head>
       <div className="w-full flex items-center flex-col">
-        <div className=" bg-blue-300 w-full h-auto flex justify-center">
+        <div className="w-full h-auto flex items-center flex-col">
+          <p className="text-black mt-14 text-4xl">অভিধান</p>
+          <p className=" text-gray-500">বাংলা একাডেমি আধুনিক বাংলা অভিধান</p>
           <input
-            className="m-2 p-2 max-w-xl w-full rounded-md"
+            className=" mt-5 bg-blue-50 m-2 p-2 max-w-xl w-full rounded-md outline-blue-500 focus:bg-white"
             placeholder="কাঙ্ক্ষিত শব্দ লিখুন"
             onChange={checkInput}
           />
@@ -46,6 +49,21 @@ const Home: NextPage = () => {
             />
           ))}
         </div>
+        <div className="flex justify-between w-full max-w-xl mt-2 mb-1">
+          <div className=" text-xs">
+            সূত্র:
+            <span className="text-gray-500">
+              {" "}
+              বাংলা একাডেমি আধুনিক বাংলা অভিধান
+            </span>
+          </div>
+          <div className="text-xs">
+            ©{" "}
+            <Link href="https://github.com/tajultonim">
+              <a className=" text-gray-500">তাজুল তনিম </a>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -54,7 +72,7 @@ const Home: NextPage = () => {
 function WordCard(prop: any) {
   return (
     <>
-      <div className=" w-full py-2 px-4 bg-gray-100 border-b-[1px] border-gray-200">
+      <div className=" w-full py-2 px-4 border-b-[1px] border-gray-200">
         <p>
           <span className=" text-lg text-gray-900">{prop.word}</span>
           <span className=" pl-1 text-gray-500 text-xs">
